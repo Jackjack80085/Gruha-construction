@@ -54,11 +54,10 @@ export const SERVICES = [
 ];
 
 export const NAV_LINKS = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#services' },
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services' },
   { name: 'About Us', href: '#about' },
   { name: 'Testimonials', href: '#testimonials' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 export const TESTIMONIALS = [

@@ -29,6 +29,14 @@ export default function Testimonials() {
   return (
     <section id="testimonials" ref={containerRef} className="py-20 bg-brand-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-noise pointer-events-none" />
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <img 
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" 
+          alt="Architectural Background"
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
       <motion.div 
         style={{ y }}
         className="absolute top-0 left-0 w-full h-full bg-asym-texture opacity-10 pointer-events-none" 

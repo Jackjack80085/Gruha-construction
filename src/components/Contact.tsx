@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useRef, useState, FormEvent } from 'react';
 import { Send, Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import { SERVICES } from '../constants';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -44,7 +45,7 @@ export default function Contact() {
                 <span className="italic">Conversation.</span>
               </h2>
               
-              <div className="space-y-12">
+              <div className="space-y-12 mb-16">
                 <div className="flex items-start gap-6">
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-secondary shadow-sm">
                     <Phone size={20} />
@@ -75,6 +76,22 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
+
+              {/* Added Image for Contact Section */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative rounded-[3rem] overflow-hidden aspect-video shadow-xl border-4 border-white/20"
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800" 
+                  alt="Office Interior"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-brand-primary/10" />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -121,12 +138,15 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Subject</label>
+                      <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Service Required</label>
                       <select className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all appearance-none">
-                        <option className="bg-brand-primary">Interior Design Inquiry</option>
-                        <option className="bg-brand-primary">Architectural Project</option>
-                        <option className="bg-brand-primary">Commercial Space</option>
-                        <option className="bg-brand-primary">Other</option>
+                        <option className="bg-brand-primary" value="">Select a Service</option>
+                        {SERVICES.map((service) => (
+                          <option key={service.id} value={service.id} className="bg-brand-primary">
+                            {service.title}
+                          </option>
+                        ))}
+                        <option className="bg-brand-primary" value="other">Other</option>
                       </select>
                     </div>
 

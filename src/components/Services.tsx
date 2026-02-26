@@ -1,167 +1,83 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Services() {
-  const [activeService, setActiveService] = useState(0);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-150, 150]);
-
-  // High-quality images for each service to enhance the "premium" feel
-  const serviceImages = [
-    "https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=1200", // Pre-construction
-    "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200", // Site Prep
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200", // Architectural
-    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200", // MEP
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", // Interior
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", // Residential
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200", // Commercial
-  ];
+  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   return (
-    <section id="services" ref={containerRef} className="py-32 bg-brand-primary relative overflow-hidden min-h-screen flex items-center">
+    <section id="services" ref={containerRef} className="py-24 bg-brand-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-noise pointer-events-none" />
       <motion.div 
         style={{ y }}
-        className="absolute inset-0 bg-asym-texture opacity-20 pointer-events-none" 
+        className="absolute inset-0 bg-asym-texture opacity-10 pointer-events-none" 
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          {/* Left: Interactive Service List */}
-          <div className="lg:col-span-5">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-brand-secondary font-medium tracking-[0.4em] uppercase text-[10px] mb-4 block"
+          >
+            Our Expertise
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-serif text-brand-accent leading-tight"
+          >
+            Crafting the <span className="italic text-brand-secondary">Future</span> of Living.
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SERVICES.map((service, idx) => (
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-16"
+              transition={{ delay: idx * 0.1 }}
             >
-              <span className="text-brand-secondary font-medium tracking-[0.4em] uppercase text-xs mb-6 block">
-                Our Expertise
-              </span>
-              <h2 className="text-5xl md:text-7xl font-serif text-brand-accent leading-tight">
-                Crafting the <br />
-                <span className="italic text-brand-secondary">Future</span> of Living.
-              </h2>
-            </motion.div>
-
-            <div className="space-y-2">
-              {SERVICES.map((service, idx) => (
-                <motion.div
-                  key={service.id}
-                  onMouseEnter={() => setActiveService(idx)}
-                  className={`group cursor-pointer py-6 border-b border-white/5 transition-all duration-500 ${
-                    activeService === idx ? 'pl-8' : 'pl-0'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6">
-                      <span className={`text-xs font-mono transition-colors duration-500 ${
-                        activeService === idx ? 'text-brand-secondary' : 'text-brand-accent/20'
-                      }`}>
-                        0{idx + 1}
-                      </span>
-                      <h3 className={`text-2xl md:text-4xl font-serif transition-all duration-500 ${
-                        activeService === idx ? 'text-white' : 'text-brand-accent/40 group-hover:text-brand-accent/60'
-                      }`}>
-                        {service.title}
-                      </h3>
-                    </div>
-                    <motion.div
-                      animate={{ 
-                        rotate: activeService === idx ? 45 : 0,
-                        opacity: activeService === idx ? 1 : 0,
-                        x: activeService === idx ? 0 : -20
-                      }}
-                      className="text-brand-secondary"
-                    >
-                      <ArrowUpRight size={32} />
-                    </motion.div>
-                  </div>
-                  
-                  <AnimatePresence>
-                    {activeService === idx && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-brand-accent/60 mt-4 text-sm max-w-sm leading-relaxed">
-                          {service.description}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Dynamic Visual Showcase */}
-          <div className="lg:col-span-7 sticky top-32">
-            <div className="relative aspect-[4/5] md:aspect-video lg:aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white/5">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeService}
-                  initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
-                >
-                  <img
-                    src={serviceImages[activeService]}
-                    alt={SERVICES[activeService].title}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 via-transparent to-transparent" />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Floating Icon Card */}
-              <motion.div
-                key={`icon-${activeService}`}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="absolute bottom-12 left-12 glass-premium p-8 rounded-3xl flex items-center gap-6 border border-white/10"
+              <Link
+                to={`/services#${service.id}`}
+                className="group block bg-white/5 border border-white/10 p-8 rounded-[2.5rem] hover:bg-white/10 transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="w-16 h-16 bg-brand-secondary rounded-2xl flex items-center justify-center text-brand-primary shadow-xl">
-                  {(() => {
-                    const Icon = SERVICES[activeService].icon;
-                    return <Icon size={32} strokeWidth={1.5} />;
-                  })()}
+                <div className="w-12 h-12 bg-brand-secondary/10 rounded-2xl flex items-center justify-center text-brand-secondary mb-6 group-hover:bg-brand-secondary group-hover:text-brand-primary transition-all duration-500">
+                  <service.icon size={24} strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="text-brand-accent/40 text-[10px] uppercase tracking-widest font-bold mb-1">Service Focus</p>
-                  <p className="text-white font-serif text-xl">{SERVICES[activeService].title}</p>
-                </div>
-              </motion.div>
-
-              {/* Decorative Elements */}
-              <div className="absolute top-12 right-12 flex flex-col items-end gap-2">
-                <div className="w-12 h-[1px] bg-brand-secondary" />
-                <p className="text-vertical text-[10px] uppercase tracking-[0.5em] text-brand-secondary font-bold">
-                  PREMIUM QUALITY
+                <h3 className="text-xl font-serif text-white mb-3 group-hover:text-brand-secondary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-brand-accent/40 text-sm leading-relaxed mb-6 line-clamp-2">
+                  {service.description}
                 </p>
-              </div>
-            </div>
+                <div className="flex items-center gap-2 text-brand-secondary text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
+                  Learn More <ArrowUpRight size={14} />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
 
-            {/* Background Parallax Shape */}
-            <motion.div
-              style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
-              className="absolute -bottom-20 -right-20 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl pointer-events-none"
-            />
-          </div>
+        <div className="mt-16 text-center">
+          <Link 
+            to="/services"
+            className="inline-flex items-center gap-3 text-brand-accent/40 uppercase tracking-[0.3em] text-[10px] font-bold border-b border-white/10 pb-2 hover:text-brand-secondary hover:border-brand-secondary transition-all"
+          >
+            View All Services Detailed
+          </Link>
         </div>
       </div>
     </section>

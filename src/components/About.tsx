@@ -63,6 +63,18 @@ export default function About() {
               />
             </motion.div>
 
+            <motion.div
+              style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
+              className="absolute -top-12 -left-12 z-10 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white w-1/3 aspect-square hidden md:block"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=600"
+                alt="Architectural Detail"
+                className="w-full h-full object-cover grayscale"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+
             {/* Decorative Background Shape */}
             <motion.div 
               style={{ y: bgY }}

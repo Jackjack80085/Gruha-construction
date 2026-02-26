@@ -125,12 +125,25 @@ export default function Hero() {
                   referrerPolicy="no-referrer"
                 />
               </div>
+
+              {/* Second Overlapping Image in Hero */}
+              <motion.div
+                style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
+                className="absolute -bottom-12 -right-12 w-1/2 aspect-square rounded-[3rem] overflow-hidden border-[8px] border-white shadow-2xl z-30 hidden md:block"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
+                  alt="Modern Architecture"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
               
               {/* Floating Element */}
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-12 -left-12 glass-premium p-8 rounded-3xl max-w-[200px] hidden md:block"
+                className="absolute -bottom-12 -left-12 glass-premium p-8 rounded-3xl max-w-[200px] hidden md:block z-40"
               >
                 <p className="text-brand-accent text-xs uppercase tracking-widest mb-2 opacity-60">Featured Project</p>
                 <p className="text-white font-serif text-lg leading-tight">The Obsidian Villa, Lavelle Road</p>

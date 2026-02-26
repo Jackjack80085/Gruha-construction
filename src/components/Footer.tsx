@@ -1,9 +1,19 @@
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Facebook, ArrowUp } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Footer() {
+  const { pathname } = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getHref = (href: string) => {
+    if (href.startsWith('#')) {
+      return pathname === '/' ? href : `/${href}`;
+    }
+    return href;
   };
 
   return (
@@ -14,18 +24,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
           
           {/* Brand Column */}
-          <div className="md:col-span-4">
-            <a href="#home" className="flex flex-col leading-none mb-8">
+          <div className="md:col-span-6">
+            <Link to="/" className="flex flex-col leading-none mb-8">
               <span className="text-3xl font-serif font-bold tracking-tighter text-brand-accent">
                 GRUHA
               </span>
               <span className="text-[10px] uppercase tracking-[0.6em] text-brand-secondary font-bold">
                 Constructions
               </span>
-            </a>
-            <p className="text-brand-accent/40 text-sm leading-relaxed max-w-xs mb-8">
+            </Link>
+            <p className="text-brand-accent/40 text-sm leading-relaxed max-w-md mb-8">
               Redefining the boundaries of architecture and interior design through 
-              unwavering commitment to quality and artistic vision.
+              unwavering commitment to quality and artistic vision. We create spaces 
+              that inspire, comfort, and endure.
             </p>
             <div className="flex gap-6">
               {[Instagram, Linkedin, Facebook].map((Icon, idx) => (
@@ -42,55 +53,36 @@ export default function Footer() {
           </div>
 
           {/* Links Columns */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <h4 className="text-xs uppercase tracking-[0.3em] text-brand-secondary font-bold mb-8">Explore</h4>
             <ul className="space-y-4">
               {['Home', 'Services', 'About', 'Projects'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-brand-accent/60 hover:text-brand-accent text-sm transition-colors">
-                    {item}
-                  </a>
+                  {item === 'Services' ? (
+                    <Link to="/services" className="text-brand-accent/60 hover:text-brand-accent text-sm transition-colors">
+                      {item}
+                    </Link>
+                  ) : (
+                    <a href={getHref(`#${item.toLowerCase()}`)} className="text-brand-accent/60 hover:text-brand-accent text-sm transition-colors">
+                      {item}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <h4 className="text-xs uppercase tracking-[0.3em] text-brand-secondary font-bold mb-8">Services</h4>
             <ul className="space-y-4">
               {['Interior', 'Architecture', 'Commercial', 'Residential'].map((item) => (
                 <li key={item}>
-                  <a href="#services" className="text-brand-accent/60 hover:text-brand-accent text-sm transition-colors">
+                  <Link to={`/services#${item.toLowerCase()}`} className="text-brand-accent/60 hover:text-brand-accent text-sm transition-colors">
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Newsletter / CTA Column */}
-          <div className="md:col-span-4">
-            <h4 className="text-xs uppercase tracking-[0.3em] text-brand-secondary font-bold mb-8">Stay Inspired</h4>
-            <p className="text-brand-accent/40 text-sm mb-6">Join our newsletter for design insights and project updates.</p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl flex-grow focus:outline-none focus:border-brand-secondary transition-all text-sm"
-              />
-              <motion.button 
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: '#FFFFFF',
-                  color: '#121212',
-                  boxShadow: '0 10px 20px -5px rgba(255,255,255,0.2)'
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-brand-secondary text-brand-primary px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
-              >
-                Join
-              </motion.button>
-            </div>
           </div>
         </div>
 
