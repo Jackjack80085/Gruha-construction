@@ -9,7 +9,7 @@ const SERVICE_DETAILS = {
   'pre-construction': {
     fullDescription: 'Our pre-construction services are the foundation of every successful project. We dive deep into feasibility studies, site analysis, and budget forecasting to ensure that your vision is both achievable and sustainable. We handle all regulatory approvals and zoning requirements, clearing the path for a smooth construction process.',
     features: ['Feasibility Studies', 'Budget Estimation', 'Regulatory Approvals', 'Site Analysis', 'Project Scheduling'],
-    image: 'https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200'
   },
   'site-prep': {
     fullDescription: 'Before a single brick is laid, the ground must be perfectly prepared. Our site preparation team utilizes advanced machinery and precision engineering for excavation, grading, and utility trenching. We ensure the site is stable, well-drained, and ready to support the structural integrity of your future building.',

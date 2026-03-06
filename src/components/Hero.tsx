@@ -49,7 +49,7 @@ export default function Hero() {
               >
                 <div className="h-[1px] w-12 bg-brand-secondary" />
                 <span className="text-brand-secondary font-medium tracking-[0.3em] uppercase text-xs">
-                  Est. 2010 • Bangalore
+                  Est. 1995 • Bangalore
                 </span>
               </motion.div>
 

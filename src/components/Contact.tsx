@@ -5,6 +5,8 @@ import { SERVICES } from '../constants';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -14,9 +16,39 @@ export default function Contact() {
   const y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
   const bgY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      service: formData.get('service'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('Failed to send inquiry');
+      }
+    } catch (err) {
+      setError('Something went wrong. Please try again later.');
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -52,7 +84,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-brand-muted font-bold mb-2">Call Us</p>
-                    <p className="text-xl font-serif text-brand-primary">+91 98765 43210</p>
+                    <p className="text-xl font-serif text-brand-primary">9620059933</p>
                   </div>
                 </div>
 
@@ -62,17 +94,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-brand-muted font-bold mb-2">Email Us</p>
-                    <p className="text-xl font-serif text-brand-primary">hello@gruha.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-secondary shadow-sm">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-brand-muted font-bold mb-2">Visit Us</p>
-                    <p className="text-xl font-serif text-brand-primary">Indiranagar, 100 Feet Road <br />Bangalore, KA 560038</p>
+                    <p className="text-xl font-serif text-brand-primary">gruhaconstruction1@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -121,6 +143,7 @@ export default function Contact() {
                         <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Full Name</label>
                         <input
                           required
+                          name="name"
                           type="text"
                           placeholder="John Doe"
                           className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all placeholder:text-white/20"
@@ -130,6 +153,7 @@ export default function Contact() {
                         <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Email Address</label>
                         <input
                           required
+                          name="email"
                           type="email"
                           placeholder="john@example.com"
                           className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all placeholder:text-white/20"
@@ -139,7 +163,7 @@ export default function Contact() {
 
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Service Required</label>
-                      <select className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all appearance-none">
+                      <select name="service" className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all appearance-none">
                         <option className="bg-brand-primary" value="">Select a Service</option>
                         {SERVICES.map((service) => (
                           <option key={service.id} value={service.id} className="bg-brand-primary">
@@ -154,24 +178,30 @@ export default function Contact() {
                       <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Your Message</label>
                       <textarea
                         required
+                        name="message"
                         rows={4}
                         placeholder="Tell us about your dream project..."
                         className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all placeholder:text-white/20 resize-none"
                       />
                     </div>
 
+                    {error && (
+                      <p className="text-red-500 text-sm font-medium">{error}</p>
+                    )}
+
                     <motion.button
                       type="submit"
-                      whileHover={{ 
+                      disabled={isSubmitting}
+                      whileHover={!isSubmitting ? { 
                         scale: 1.02, 
                         backgroundColor: '#D4AF37', 
                         color: '#121212',
                         boxShadow: '0 20px 40px -10px rgba(212,175,55,0.4)'
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full border border-brand-secondary text-brand-secondary py-6 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500"
+                      } : {}}
+                      whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                      className={`w-full border border-brand-secondary text-brand-secondary py-6 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
-                      Send Inquiry
+                      {isSubmitting ? 'Sending...' : 'Send Inquiry'}
                       <Send size={18} />
                     </motion.button>
                   </motion.form>
