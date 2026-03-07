@@ -5,5 +5,18 @@
   "framework": "vite",
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.gruhaconstruction.com/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "gruhaconstruction.com"
+        }
+      ]
+    }
+  ]
 }
