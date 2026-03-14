@@ -24,7 +24,7 @@ const SERVICE_DETAILS = {
   'mep': {
     fullDescription: 'Mechanical, Electrical, and Plumbing (MEP) systems are the essential infrastructure of any modern building. We provide integrated engineering solutions that prioritize energy efficiency, safety, and long-term reliability. From complex HVAC climate control and high-voltage electrical distribution to advanced water management and fire suppression systems, we ensure your building operates seamlessly and sustainably.',
     features: ['HVAC & Climate Control', 'Electrical Grid & Lighting', 'Sanitary & Water Systems', 'Fire Safety & Suppression', 'Smart Building Automation', 'Energy Efficiency Audits'],
-    image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200'
   },
   'interior': {
     fullDescription: 'Interior design is where luxury meets personality. We curate every element—from custom furniture and lighting to textures and color palettes—to create cohesive, high-end environments. Whether it is a minimalist penthouse or a corporate headquarters, we craft spaces that inspire.',
@@ -102,7 +102,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-6xl md:text-8xl font-serif text-brand-primary leading-tight"
+          className="text-5xl md:text-8xl font-serif text-brand-primary leading-tight"
         >
           Comprehensive <br />
           <span className="italic">Solutions.</span>
@@ -130,12 +130,12 @@ export default function ServicesPage() {
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      className="relative rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl"
+                      className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden aspect-video sm:aspect-[4/3] shadow-2xl"
                     >
                       <img 
                         src={details.image} 
                         alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute inset-0 bg-brand-primary/20" />
@@ -150,10 +150,10 @@ export default function ServicesPage() {
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center text-brand-secondary">
-                          <service.icon size={24} />
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-primary rounded-xl md:rounded-2xl flex items-center justify-center text-brand-secondary">
+                          <service.icon size={20} className="md:w-6 md:h-6" />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-serif text-brand-primary">{service.title}</h2>
+                        <h2 className="text-2xl md:text-4xl font-serif text-brand-primary">{service.title}</h2>
                       </div>
                       
                       <p className="text-lg text-brand-muted font-light leading-relaxed mb-8">

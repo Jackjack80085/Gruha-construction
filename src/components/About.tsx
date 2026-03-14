@@ -30,18 +30,18 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
           
           {/* Overlapping Images with Parallax */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 relative mb-20 lg:mb-0">
             <motion.div
               style={{ y: y1 }}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative z-20 rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white w-4/5 aspect-[3/4]"
+              className="relative z-20 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-white w-4/5 aspect-square sm:aspect-[3/4]"
             >
               <img
                 src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1000"
                 alt="Interior Design Process"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -52,24 +52,24 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute -bottom-12 -right-0 z-30 rounded-[3rem] overflow-hidden shadow-2xl border-[8px] border-white w-3/5 aspect-square"
+              className="absolute -bottom-10 -right-0 z-30 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-[6px] md:border-[8px] border-white w-3/5 aspect-square"
             >
               <img
                 src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=1000"
                 alt="Finished Interior"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
 
             <motion.div
               style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
-              className="absolute -top-12 -left-12 z-10 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white w-1/3 aspect-square hidden md:block"
+              className="absolute -top-6 -left-6 md:-top-12 md:-left-12 z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl border-2 md:border-4 border-white w-1/3 aspect-square grayscale"
             >
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
                 alt="Architectural Detail"
-                className="w-full h-full object-cover grayscale"
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </motion.div>

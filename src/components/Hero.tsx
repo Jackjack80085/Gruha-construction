@@ -58,7 +58,7 @@ export default function Hero() {
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                className="text-7xl md:text-[10rem] font-serif font-light text-brand-primary leading-[0.85] mb-8 tracking-tighter"
+                className="text-6xl sm:text-7xl md:text-[10rem] font-serif font-light text-brand-primary leading-[0.85] mb-8 tracking-tighter"
               >
                 Sculpting <br />
                 <span className="italic font-normal text-brand-secondary">Spaces.</span>
@@ -109,7 +109,7 @@ export default function Hero() {
           </div>
 
           {/* Asymmetrical Image Grid with Parallax */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative mt-12 lg:mt-0">
             <motion.div
               style={{ y: y2, rotate }}
               initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
@@ -117,11 +117,11 @@ export default function Hero() {
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="relative z-20"
             >
-              <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-white">
+              <div className="aspect-square sm:aspect-[4/5] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[8px] md:border-[12px] border-white">
                 <img
                   src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000"
                   alt="Luxury Interior"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -129,7 +129,7 @@ export default function Hero() {
               {/* Second Overlapping Image in Hero */}
               <motion.div
                 style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
-                className="absolute -bottom-12 -right-12 w-1/2 aspect-square rounded-[3rem] overflow-hidden border-[8px] border-white shadow-2xl z-30 hidden md:block"
+                className="absolute -bottom-4 -right-4 md:-bottom-12 md:-right-12 w-2/5 md:w-1/2 aspect-square rounded-[1.5rem] md:rounded-[3rem] overflow-hidden border-[4px] md:border-[8px] border-white shadow-2xl z-30"
               >
                 <img
                   src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
@@ -143,10 +143,10 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-12 -left-12 glass-premium p-8 rounded-3xl max-w-[200px] hidden md:block z-40"
+                className="absolute -bottom-10 -left-6 md:-bottom-12 md:-left-12 glass-premium p-4 md:p-8 rounded-2xl md:rounded-3xl max-w-[150px] md:max-w-[200px] z-40"
               >
-                <p className="text-brand-accent text-xs uppercase tracking-widest mb-2 opacity-60">Featured Project</p>
-                <p className="text-white font-serif text-lg leading-tight">The Obsidian Villa, Lavelle Road</p>
+                <p className="text-brand-primary text-[8px] md:text-xs uppercase tracking-widest mb-1 md:mb-2 opacity-60">Featured Project</p>
+                <p className="text-brand-primary font-serif text-sm md:text-lg leading-tight">The Obsidian Villa</p>
               </motion.div>
             </motion.div>
 
@@ -160,8 +160,8 @@ export default function Hero() {
       </div>
 
       {/* Vertical Rail Text */}
-      <div className="absolute right-8 bottom-24 hidden xl:block">
-        <p className="text-vertical text-[10px] uppercase tracking-[0.5em] text-brand-muted/40 font-bold">
+      <div className="absolute right-4 md:right-8 bottom-12 md:bottom-24 z-50">
+        <p className="text-vertical text-[8px] md:text-[10px] uppercase tracking-[0.5em] text-brand-muted/40 font-bold">
           BESPOKE INTERIORS • ARCHITECTURAL EXCELLENCE • GRUHA CONSTRUCTIONS
         </p>
       </div>
