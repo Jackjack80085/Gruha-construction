@@ -66,28 +66,28 @@ export const TESTIMONIALS = [
     name: 'Rajesh Kumar',
     role: 'Homeowner',
     feedback: 'Gruha Constructions transformed our old house into a modern masterpiece. Their attention to detail in interior design is unmatched.',
-    image: 'https://picsum.photos/seed/person1/100/100',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
   },
   {
     id: 2,
     name: 'Sneha Reddy',
     role: 'Business Owner',
     feedback: 'The commercial project they handled for our new office was completed ahead of schedule and with top-notch quality. Highly recommended!',
-    image: 'https://picsum.photos/seed/person2/100/100',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
   },
   {
     id: 3,
     name: 'Vikram Singh',
     role: 'Real Estate Developer',
     feedback: 'Professionalism and integrity are the core of Gruha. Their structural designs are both innovative and incredibly solid.',
-    image: 'https://picsum.photos/seed/person3/100/100',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
   },
   {
     id: 4,
     name: 'Ananya Iyer',
     role: 'Interior Designer',
     feedback: 'Collaborating with Gruha on MEP services was a breeze. They understand the technical nuances and deliver perfect results every time.',
-    image: 'https://picsum.photos/seed/person4/100/100',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200',
   },
 ];
 

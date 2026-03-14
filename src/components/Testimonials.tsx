@@ -31,7 +31,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-noise pointer-events-none" />
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <img 
-          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
           alt="Architectural Background"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"

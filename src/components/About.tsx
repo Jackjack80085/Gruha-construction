@@ -39,7 +39,7 @@ export default function About() {
               className="relative z-20 rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white w-4/5 aspect-[3/4]"
             >
               <img
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000"
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1000"
                 alt="Interior Design Process"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -55,7 +55,7 @@ export default function About() {
               className="absolute -bottom-12 -right-0 z-30 rounded-[3rem] overflow-hidden shadow-2xl border-[8px] border-white w-3/5 aspect-square"
             >
               <img
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000"
+                src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=1000"
                 alt="Finished Interior"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -67,7 +67,7 @@ export default function About() {
               className="absolute -top-12 -left-12 z-10 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white w-1/3 aspect-square hidden md:block"
             >
               <img
-                src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=600"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
                 alt="Architectural Detail"
                 className="w-full h-full object-cover grayscale"
                 referrerPolicy="no-referrer"

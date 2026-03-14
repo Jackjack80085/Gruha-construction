@@ -14,7 +14,7 @@ const SERVICE_DETAILS = {
   'site-prep': {
     fullDescription: 'Before a single brick is laid, the ground must be perfectly prepared. Our site preparation team utilizes advanced machinery and precision engineering for excavation, grading, and utility trenching. We ensure the site is stable, well-drained, and ready to support the structural integrity of your future building.',
     features: ['Precision Excavation', 'Land Grading', 'Utility Installation', 'Soil Testing', 'Drainage Solutions'],
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200'
   },
   'architectural': {
     fullDescription: 'Architecture is the bridge between imagination and reality. Our design team creates spaces that are not only visually stunning but also structurally superior. We focus on spatial flow, natural lighting, and sustainable materials to create timeless structures that harmonize with their environment.',
@@ -22,8 +22,8 @@ const SERVICE_DETAILS = {
     image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=1200'
   },
   'mep': {
-    fullDescription: 'Mechanical, Electrical, and Plumbing (MEP) systems are the lifeblood of any modern building. We provide integrated solutions that prioritize efficiency, safety, and ease of maintenance. From smart home automation to industrial-grade HVAC systems, we ensure your building performs at its peak.',
-    features: ['HVAC Systems', 'Electrical Grid Design', 'Plumbing Engineering', 'Fire Safety Systems', 'Smart Automation'],
+    fullDescription: 'Mechanical, Electrical, and Plumbing (MEP) systems are the essential infrastructure of any modern building. We provide integrated engineering solutions that prioritize energy efficiency, safety, and long-term reliability. From complex HVAC climate control and high-voltage electrical distribution to advanced water management and fire suppression systems, we ensure your building operates seamlessly and sustainably.',
+    features: ['HVAC & Climate Control', 'Electrical Grid & Lighting', 'Sanitary & Water Systems', 'Fire Safety & Suppression', 'Smart Building Automation', 'Energy Efficiency Audits'],
     image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=1200'
   },
   'interior': {
