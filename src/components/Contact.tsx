@@ -25,6 +25,7 @@ export default function Contact() {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
+      phone: formData.get('phone'),
       service: formData.get('service'),
       message: formData.get('message'),
     };
@@ -161,17 +162,29 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Service Required</label>
-                      <select name="service" className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all appearance-none">
-                        <option className="bg-brand-primary" value="">Select a Service</option>
-                        {SERVICES.map((service) => (
-                          <option key={service.id} value={service.id} className="bg-brand-primary">
-                            {service.title}
-                          </option>
-                        ))}
-                        <option className="bg-brand-primary" value="other">Other</option>
-                      </select>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Contact Number</label>
+                        <input
+                          required
+                          name="phone"
+                          type="tel"
+                          placeholder="+91 96200 59933"
+                          className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all placeholder:text-white/20"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-brand-accent/40 font-bold ml-1">Service Required</label>
+                        <select name="service" className="w-full bg-white/5 border-b border-white/10 text-white px-4 py-4 focus:outline-none focus:border-brand-secondary transition-all appearance-none">
+                          <option className="bg-brand-primary" value="">Select a Service</option>
+                          {SERVICES.map((service) => (
+                            <option key={service.id} value={service.id} className="bg-brand-primary">
+                              {service.title}
+                            </option>
+                          ))}
+                          <option className="bg-brand-primary" value="other">Other</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div className="space-y-2">

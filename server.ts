@@ -13,10 +13,10 @@ async function startServer() {
 
   // API routes
   app.post("/api/contact", async (req, res) => {
-    const { name, email, service, message } = req.body;
+    const { name, email, phone, service, message } = req.body;
     const recipient = process.env.CONTACT_EMAIL || "gruhaconstruction1@gmail.com";
 
-    console.log(`Sending inquiry from ${name} (${email}) to ${recipient}`);
+    console.log(`Sending inquiry from ${name} (${email}, ${phone}) to ${recipient}`);
     console.log(`Service: ${service}`);
     console.log(`Message: ${message}`);
 
@@ -34,7 +34,7 @@ async function startServer() {
       from: email,
       to: recipient,
       subject: `New Inquiry: ${service} from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`
     });
     */
 
